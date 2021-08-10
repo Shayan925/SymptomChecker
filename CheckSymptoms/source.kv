@@ -1,0 +1,31 @@
+ScreenManager:
+    FirstScreen:
+    SecondScreen:
+
+<FirstScreen>:
+    name: "first"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        padding: "5dp"
+        MDRectangleFlatButton:
+            text: "Show Results"
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            on_release:
+                root.show_results()
+                root.manager.current = "second"
+                root.manager.transition.direction = "left"
+
+<SecondScreen>:
+    name: "second"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        padding: "5dp"
+        MDRectangleFlatButton:
+            text: "Back"
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            on_release:
+                root.clear()
+                root.manager.current = "first"
+                root.manager.transition.direction = "right"
